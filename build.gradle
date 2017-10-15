@@ -1,0 +1,41 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+jar {
+	baseName = 'CommonServices'
+	version = '0.0.1-SNAPSHOT'
+}
+
+group = 'com.cds.gemini'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.2'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.6.2'
+	compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.9'
+	
+	
+	compile 'org.springframework:spring-context:+'
+	compile 'org.springframework:spring-core:+'
+	
+	compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.10'
+	compile 'org.codehaus.groovy.modules.http-builder:http-builder:+'
+	
+	//compile 'com.cds.gemini:CommonDomainModel:+'
+	compile project(':CommonDomainModel')
+	
+	testCompile group: 'org.springframework', name: 'spring-test', version: '4.3.2.RELEASE'
+	testCompile group: 'org.hamcrest', name: 'hamcrest-junit', version: '2.0.0.0'
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+}
